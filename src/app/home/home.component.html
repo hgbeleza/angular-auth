@@ -1,2 +1,35 @@
-<p>home works!</p>
-<button class="btn btn-error" (click)="onLogout()">Logout</button>
+<header class="bg-indigo-950">
+    <nav class="flex justify-between items-center w-[92%] h-20 mx-auto">
+        <div>
+            <a href="" class="text-2xl text-white uppercase">Logo</a>
+        </div>
+        <div class="duration-500 md:static absolute bg-indigo-950 md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5">
+            <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
+                <li>
+                    <a href="#" class="hover:text-gray-500 text-white text-lg">Home</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:text-gray-500 text-white text-lg">Services</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:text-gray-500 text-white text-lg">Prices</a>
+                </li>
+                <li>
+                    <a href="https://www.github.com/hgbeleza" class="hover:text-gray-500 text-white text-lg" target="_blank">Github</a>
+                </li>
+            </ul>
+        </div>
+        <div class="flex items-center gap-6">
+            <button class="btn btn-error" (click)="onLogout()">Logout</button>
+            <div (click)="openMenu()">
+                <i class="bi bi-list text-3xl cursor-pointer md:hidden"></i>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="w-[92%] h-20 mx-auto">
+    <h1 class="text-2xl">
+        hello world
+    </h1>
+</div>
