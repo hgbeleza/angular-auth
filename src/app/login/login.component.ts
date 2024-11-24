@@ -3,6 +3,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthService } from '../services/auth.service';
 import { AlertErrorComponent } from '../components/alert-error/alert-error.component';
 import { Router } from '@angular/router';
+import { AuthResponse } from '../models/AuthResponse';
+import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   msg: string = '';
+  access_token: string = '';
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(4)])
@@ -20,7 +23,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private route: Router
+    private route: Router,
+    private tokenService: TokenService
   ) {}
 
   ngOnInit(): void {
@@ -31,10 +35,10 @@ export class LoginComponent implements OnInit {
       const email = this.loginForm.value.email as string;
       const password = this.loginForm.value.password as string;
       this.authService.signIn(email, password).subscribe({
-        next: () => this.onSuccess(),
+        next: (response: AuthResponse) => this.onSuccess(response.access_token),
         error: (err) => {
           if(err.error) {
-            this.onError(err.error.message)
+            this.onError(err.error.message || 'An unexpected error occurred. Please, try again later')
           }
         }
       });
@@ -49,7 +53,8 @@ export class LoginComponent implements OnInit {
     }, 5000);
   }
 
-  private onSuccess() {
-    // code...
+  private onSuccess(accessToken: string) {
+    this.tokenService.setToken(accessToken);
+    this.route.navigate(['home']);
   }
 }
