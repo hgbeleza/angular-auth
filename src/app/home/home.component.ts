@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TokenService } from '../services/token.service';
+import { TokenService } from '../services/token/token.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   constructor(
-     private tokenService: TokenService,
-     private router: Router
-    ) {}
+    private tokenService: TokenService,
+    private router: Router
+  ) {}
 
   onLogout() {
     this.tokenService.clearToken();

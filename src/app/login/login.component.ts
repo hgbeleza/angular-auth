@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 import { AlertErrorComponent } from '../components/alert-error/alert-error.component';
 import { Router } from '@angular/router';
 import { AuthResponse } from '../models/AuthResponse';
-import { TokenService } from '../services/token.service';
+import { TokenService } from '../services/token/token.service';
 
 @Component({
   selector: 'app-login',
