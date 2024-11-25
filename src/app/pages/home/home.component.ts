@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenService } from '../services/token/token.service';
-import { Router } from '@angular/router';
-import { User } from '../models/User';
-import { AuthService } from '../services/auth/auth.service';
+import { User } from '../../models/User';
+import { AuthService } from '../../services/auth/auth.service';
 import { TableComponent } from './table/table.component';
+import { HeaderComponent } from '../../components/header/header.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TableComponent],
+  imports: [HeaderComponent, TableComponent, RouterOutlet],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -21,11 +21,7 @@ export class HomeComponent implements OnInit {
     state: ''
   }
 
-  constructor(
-    private tokenService: TokenService,
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.isLoggedUser();
@@ -35,14 +31,5 @@ export class HomeComponent implements OnInit {
     this.authService.getProfile().subscribe(res => {
       this.userData = res;
     });
-  }
-
-  onLogout() {
-    this.tokenService.clearToken();
-    this.router.navigate(['auth/login']);
-  }
-
-  openMenu() {
-    // code...
   }
 }
