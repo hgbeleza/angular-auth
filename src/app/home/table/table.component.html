@@ -1,0 +1,37 @@
+<div class="mb-7">
+    <a href="#" class="btn btn-primary">
+        Add New
+    </a>
+</div>
+
+<div class="overflow-x-auto">
+    <table class="table">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>E-mail</th>
+          <th>Country</th>
+          <th>State</th>
+          <th>City</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- row 1 -->
+         @for(user of usersData; track user.email) {
+             <tr>
+               <td>{{ user.username }}</td>
+               <td>{{ user.email }}</td>
+               <td>{{ user.country }}</td>
+               <td>{{ user.state }}</td>
+               <td>{{ user.city }}</td>
+               <td>
+                <a href="#" class="btn btn-warning me-3">Edit</a>
+                <a href="#" class="btn btn-error">Delete</a>
+               </td>
+             </tr>
+         }
+      </tbody>
+    </table>
+  </div>

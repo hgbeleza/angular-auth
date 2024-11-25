@@ -3,11 +3,12 @@ import { TokenService } from '../services/token/token.service';
 import { Router } from '@angular/router';
 import { User } from '../models/User';
 import { AuthService } from '../services/auth/auth.service';
+import { TableComponent } from './table/table.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [TableComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

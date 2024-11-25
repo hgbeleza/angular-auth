@@ -20,7 +20,7 @@
             </ul>
         </div>
         <div class="flex items-center gap-6">
-            <button class="btn btn-error" (click)="onLogout()">Logout</button>
+            <button class="btn btn-neutral" (click)="onLogout()">Logout</button>
             <div (click)="openMenu()">
                 <i class="bi bi-list text-3xl cursor-pointer md:hidden"></i>
             </div>
@@ -30,6 +30,10 @@
 
 <div class="w-[92%] h-20 mx-auto">
     <h1 class="text-[60px] text-center mt-10">
-        Hello, {{ userData.username }}
+        Olá, <span class="text-purple-600">{{ userData.username }}</span>.
     </h1>
+
+    <div class="mt-10">
+        <app-table></app-table>
+    </div>
 </div>
